@@ -52,7 +52,7 @@ rp.endpoint.ui — API адрес для UI тестов
 UI тесты:
 
 Запуск конкретного UI теста:
-```mvn -Dtest=com/example/ReportPortal/ReportPortalTests/UI/WidgetTest test```
+```mvn -Dtest=com/example/demo/ReportPortalTests/UI/WidgetTest test```
 
 API тесты:
 
@@ -63,9 +63,9 @@ API тесты:
 ```mvn -Dtest=DashboardTest#createNewDashboard test```
 
 ## Структура проекта
-```src/test/java/com/example/ReportPortal/ReportPortalTests/UI``` — UI тесты Selenide
+```src/test/java/com/example/demo/ReportPortalTests/UI``` — UI тесты Selenide
 
-```src/test/java/com/example/ReportPortal/ReportPortalTests/API``` — API тесты с RestAssured
+```src/test/java/com/example/demo/ReportPortalTests/API``` — API тесты с RestAssured
 
 ```src/test/resources/reportportal.properties``` — конфигурация Report Portal
 
