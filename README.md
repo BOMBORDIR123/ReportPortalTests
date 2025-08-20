@@ -12,7 +12,7 @@
 
 ## Конфигурация
 
-Настройки Report Portal задаются в файле `src/main/resources/reportportal.properties`:
+Настройки Report Portal задаются в файле `src/test/resources/reportportal.properties`:
 
 ## Properties
 ```
@@ -52,20 +52,20 @@ rp.endpoint.ui — API адрес для UI тестов
 UI тесты:
 
 Запуск конкретного UI теста:
-```mvn -Dtest=com/example/demo/ReportPortalTests/UI/WidgetTest test```
+```mvn -Dtest=com/example/ReportPortal/ReportPortalTests/UI/WidgetTest test```
 
 API тесты:
 
 Запуск конкретного API теста: 
-```mvn -Dtest=com/example/demo/ReportPortalTests/API/DashboardTest test```
+```mvn -Dtest=com/example/ReportPortal/ReportPortalTests/API/DashboardTest test```
 
 Можно запускать отдельные методы тестов через Maven:
 ```mvn -Dtest=DashboardTest#createNewDashboard test```
 
 ## Структура проекта
-```src/test/java/com/example/demo/ReportPortalTests/UI``` — UI тесты Selenide
+```src/test/java/com/example/ReportPortal/ReportPortalTests/UI``` — UI тесты Selenide
 
-```src/test/java/com/example/demo/ReportPortalTests/API``` — API тесты с RestAssured
+```src/test/java/com/example/ReportPortal/ReportPortalTests/API``` — API тесты с RestAssured
 
 ```src/test/resources/reportportal.properties``` — конфигурация Report Portal
 
