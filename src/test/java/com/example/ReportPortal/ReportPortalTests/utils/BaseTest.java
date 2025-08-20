@@ -21,10 +21,28 @@ abstract public class BaseTest {
 
     @BeforeAll
     static void globalSetUp() {
-        WebDriverManager.chromedriver().driverVersion("139.0.7258.68").setup();
+        String browser = System.getProperty("browser", "chrome").toLowerCase();
 
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1080";
+        switch (browser) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                Configuration.browser = "chrome";
+                Configuration.browserSize = "1920x1080";
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                Configuration.browser = "firefox";
+                Configuration.browserSize = "1920x1080";
+                break;
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                Configuration.browser = "edge";
+                Configuration.browserSize = "1920x1080";
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown browser: " + browser);
+        }
+
         Configuration.pageLoadTimeout = 60000;
         Configuration.pageLoadStrategy = PageLoadStrategy.EAGER.toString();
 
@@ -34,18 +52,11 @@ abstract public class BaseTest {
         options.addArguments("--start-maximized");
         Configuration.browserCapabilities.setCapability("goog:chromeOptions", options);
 
-        SelenideLogger.addListener("AllureSelenide",
-                new AllureSelenide()
-                        .screenshots(true)
-                        .savePageSource(true)
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
         );
     }
-
-/*    @BeforeEach
-    public void init() {
-
-    }*/
-
     @AfterEach
     public void tearDown() {
         Selenide.closeWebDriver();
