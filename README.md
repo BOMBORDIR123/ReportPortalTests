@@ -7,7 +7,7 @@
 - Java 17+
 - Maven 3.8+
 - Google Chrome
-- ChromeDriver (автоматически скачивается через WebDriverManager)
+- ChromeDriver / GeckoDriver / EdgeDriver (автоматически скачиваются через WebDriverManager)
 - Allure Commandline (для генерации отчетов)
 
 ## Конфигурация
@@ -31,11 +31,11 @@ rp.skipped.issue = true
 rp.batch.size.logs = 20
 ```
 
-```
-rp.api.key — API ключ (вписать свой ключ)
-rp.endpoint.api — API адрес для API тестов
-rp.endpoint.ui — API адрес для UI тестов
-```
+## Перед запуском тестов необходимо указать свои значения:
+
+- `rp.api.key` — ваш **API ключ** ReportPortal  
+- `rp.endpoint.api` — адрес API для **API тестов**  
+- `rp.endpoint.ui` — адрес API для **UI тестов** 
 
 ## Запуск тестов
 1. Запуск всех тестов
@@ -61,6 +61,13 @@ API тесты:
 
 Можно запускать отдельные методы тестов через Maven:
 ```mvn -Dtest=DashboardTest#createNewDashboard test```
+
+Запуск с разными браузерами через Maven:
+```
+mvn clean test -Dbrowser=firefox — через firefox
+mvn clean test -Dbrowser=edge — через edge
+mvn clean test -Dbrowser=chrome — через chrome
+```
 
 ## Структура проекта
 ```src/test/java/com/example/ReportPortal/ReportPortalTests/UI``` — UI тесты Selenide
